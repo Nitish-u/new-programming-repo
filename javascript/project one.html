@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap" rel="stylesheet">
+    <title>Random Name Picker</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        flex-direction: column;
+        gap: 1em;
+    }
+    button{
+        /* padding: 0.2em 3em ; */
+        border-radius: 1em;
+        font-weight: bold;
+        font-size: 1em;
+        padding: 0.5em 4.2em;
+        min-width: 10em;
+        width:min-content;
+    }
+    input{
+        text-align: center;
+        padding: 0.5em 0;
+        min-width: 10em;
+        outline: none;
+        color: white;
+        border: 2px solid white;
+        background-color: black;
+        border-radius: 1em;
+        font-size: 1em;
+    }
+    input::placeholder{
+        color: lightgrey;
+    }
+    #next,#done,#start,#note,#finish{
+        display: none;
+    }
+    #note,#output,#finish{
+        color: white;
+    }
+    #output{
+        font-size: 5em;
+        text-transform: capitalize;
+        color: blueviolet;
+        font-family: rochester;
+    }
+    #finish{
+        font-size: 5em;
+        text-transform: capitalize;
+        color: lightgrey;
+        font-family: rochester;
+    }
+</style>
+<body>
+    <p id="output"></p>
+    <input type="text" name="" id="Data_input_1" placeholder="Enter the Names">
+    <button onclick="input()" id="btn_1">SUBMIT</button>
+    <button id="start" onclick="start()">START</button>
+    <button id="next" onclick="next()" disabled>NEXT</button>
+    <button id="done" onclick="done()">DONE</button>
+    <p id="finish">We are Done For Today😁</p>
+    <p id="note">Note :- Click Done then Click Next.</p>
+    <script>
+        const sub_btn = document.querySelector('#btn_1');
+        const input_box = document.querySelector('#Data_input_1');
+        const next_btn = document.querySelector('#next');
+        const done_btn = document.querySelector('#done');
+        const start_btn = document.querySelector('#start');
+        const output = document.querySelector('#output');
+        const note = document.querySelector('#note');
+        const finish = document.querySelector('#finish');
+        var stds;
+        function input(){
+            const data= document.querySelector('#Data_input_1').value;
+            stds = data.split(",");
+            console.log(stds);
+            input_box.style.display="none";
+            sub_btn.style.display="none";
+            start_btn.style.display="block";
+        }
+        function start(){
+            start_btn.style.display="none";
+            next_btn.style.display="block";
+            done_btn.style.display="block";
+            note.style.display="block";
+            var nm = stds[Math.floor(Math.random() * stds.length)];
+            output.innerHTML = nm;
+            for( var i = 0; i < stds.length; i++){
+                if ( stds[i] === nm) { 
+                stds.splice(i, 1);
+                }
+            }
+        }
+        function next(){
+            if(stds.length == 0){
+                next_btn.style.display="none";
+                done_btn.style.display="none";
+                output.style.display="none";
+                note.style.display="none";
+                finish.style.display="block";
+            }
+            var nm = stds[Math.floor(Math.random() * stds.length)];
+            output.innerHTML = nm;
+            for( var i = 0; i < stds.length; i++){
+                if ( stds[i] === nm) { 
+                    stds.splice(i, 1);
+                }
+            }
+            next_btn.disabled = true;
+        }
+        function done(){
+            next_btn.disabled = false;
+        }
+    </script>
+</body>
+</html>

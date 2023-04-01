@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passing Message</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .main{
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    textarea{
+        resize: none;
+        border: 2px solid black;
+    }
+    textarea,button,#info{
+        padding: 0.5em;
+        border-radius: 1em;
+    }
+    #info{
+        text-align: center;
+        padding: 0.3em;
+        background-color: palevioletred;
+    }
+    .WhatEverPassed{
+        border-radius: 1em;
+        background-color: lightpink;
+        text-align: center;
+        padding: 0.5em;
+        width: 50%;
+        margin-top: 0.5em;
+        display: none;
+        list-style: none;
+    }
+    .WhatEverPassed li::before{
+        content: '😘';
+        margin-right: 0.5em;
+    }
+</style>
+<body>
+    <div class="main">
+        <textarea placeholder="Send Me Something❤️" name="" id="WhatEverPassed" cols="30" rows="10" ></textarea>
+        <button onclick="msg()">Submit</button>
+        <p id="info">Last Messages💕</p>
+    </div>
+    <ul class="WhatEverPassed"></ul>
+    <script>
+        function msg(){ 
+            var typed = document.querySelector('#WhatEverPassed');
+            var message = typed.value;
+            message.trim();
+            console.log(message);
+            typed.value = "";
+            if(message.length == 0){
+                alert("Aww Don't Be So Empty!");
+            }else{
+                var lstmsg = document.querySelector('.WhatEverPassed'); 
+                var NewItem = document.createElement("li");
+                var toShow = document.createTextNode(message);
+                NewItem.appendChild(toShow);
+                lstmsg.appendChild(NewItem);
+                lstmsg.style.display='block';
+            }
+        }
+    </script>
+</body>
+</html>

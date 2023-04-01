@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            user-select: none;
+        }
+        h1{
+            font-size: 4em;
+            text-align: center;
+        }
+        .counter{
+            text-align: center;
+            font-size: 200px;
+            color: yellow;
+        }
+        #buttons{
+            text-align: center;
+        }
+        #buttons button{
+            margin: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>COUNTER</h1>
+    <p class="counter">0</p>
+    <p id="buttons">
+        <button onclick="dec()">DECREASE</button>
+        <button onclick="res()">RESET</button>
+        <button onclick="inc()">INCREASE</button>
+    </p>
+    <script>
+        function dec(){
+            a--;
+            document.querySelector('.counter').innerHTML = a;
+            if(a>0){
+            document.querySelector('.counter').style.color='green';
+        }else if(a==0){
+            document.querySelector('.counter').style.color='yellow';
+        }else{
+            document.querySelector('.counter').style.color='red';
+        }
+        }
+        function res(){
+            a=0;
+            document.querySelector('.counter').innerHTML = a;
+            if(a>0){
+            document.querySelector('.counter').style.color='green';
+        }else if(a==0){
+            document.querySelector('.counter').style.color='yellow';
+        }else{
+            document.querySelector('.counter').style.color='red';
+        }
+        }
+        function inc(){
+            a++;
+            document.querySelector('.counter').innerHTML = a;
+            if(a>0){
+            document.querySelector('.counter').style.color='green';
+        }else if(a==0){
+            document.querySelector('.counter').style.color='yellow';
+        }else{
+            document.querySelector('.counter').style.color='red';
+        }
+        }        
+        
+    </script>
+</body>
+</html>

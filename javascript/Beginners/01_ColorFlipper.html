@@ -1,0 +1,68 @@
+<!-- Important Notes -->
+<!-- DOM Selectores -->
+<!--    getElementById
+        getElementsByClassName
+        getElementByTagName
+        querySelector            
+          -->
+<!--    Note :- if you are selecting an element by 'getElementsByClassName()' and only one  element is there with a specific class or you want to select any specific element with the same class name then you must assign [0] and [index no.] at the last of selection as follows :- 
+    
+var selected = document.getElementsByClassName('child')[0]; -> for the first element with that class name or for selecting the only element(if there is only one element with that class name). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: red;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+    button{
+        padding: 10px 20px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        /* color: vi; */
+    }
+    /* .child{
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+    } */
+    #child{
+        width: 100px;
+        border-radius: 10px;
+        height: 50px;
+        display: grid;
+        user-select:none;
+        place-items: center;
+        cursor: pointer;
+        background-color: #fff;
+    }
+</style>
+<body>hello
+        <button id="btn">CHANGE ME</button>
+        <div id="child">CLICK ME</div>
+    <script>
+        const arr = ["green","blue","white","yellow","pink","violet","black","orange","brown","red"]
+        const selected = document.getElementById('child');
+        selected.addEventListener("click",ChangeColor);
+        document.getElementById('btn').addEventListener("click",ChangeColor);
+        function ChangeColor(){
+            const color = arr[Math.floor(Math.random() * 10)];
+            selected.style.backgroundColor=color;
+        }
+    </script>
+</body>
+</html>
